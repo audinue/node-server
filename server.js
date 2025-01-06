@@ -3,7 +3,7 @@ import { createServer } from 'http'
 let serve = async ({
   fetch,
   port = 3000,
-  error = error => new Response(error?.stack, { status: 500 }),
+  error = (_, error) => new Response(error?.stack, { status: 500 }),
   serverError = console.error
 }) => {
   let server = createServer(async (req, res) => {
@@ -40,7 +40,7 @@ let serve = async ({
       try {
         response = await fetch(request)
       } catch (e) {
-        response = error(e)
+        response = error(request, e)
       }
       res.statusCode = response.status
       res.statusMessage = response.statusText

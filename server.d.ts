@@ -1,9 +1,7 @@
-export type Fetch = (request: Request) => Response | Promise<Response>
-
 export type ServeConfig = {
   fetch: (request: Request) => Response | Promise<Response>
   port?: number
-  error?: (error: any) => Response | Promise<Response>
+  error?: (request: Request, error: any) => Response | Promise<Response>
   serverError?: (error: any) => void
 }
 
