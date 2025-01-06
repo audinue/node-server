@@ -1,0 +1,6 @@
+{
+  "name": "@audinue/node-server",
+  "module": "server.js",
+  "version": "0.0.1",
+  "type": "module"
+}
